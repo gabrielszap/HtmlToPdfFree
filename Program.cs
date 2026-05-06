@@ -45,19 +45,7 @@ app.MapGet("invoice-report", async (InvoiceFactory invoiceFactory) =>
 
     using var page = await browser.NewPageAsync();
 
-    await page.SetUserAgentAsync(
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 " +
-        "(KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36"
-    );
-
-    await page.SetExtraHttpHeadersAsync(new Dictionary<string, string>
-    {
-        ["Accept-Language"] = "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7"
-    });
-
-    await page.GoToAsync("https://www.santosbrasil.com.br/v2021/quem-somos");
-
-    //await page.SetContentAsync(html);
+    await page.SetContentAsync(html);
     var pdfBytes = await page.PdfDataAsync(new PdfOptions
     {
         Format = PaperFormat.A4,
