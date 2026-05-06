@@ -38,6 +38,7 @@ app.MapGet("invoice-report", async (InvoiceFactory invoiceFactory) =>
         ExecutablePath = installedBrowser.GetExecutablePath(),
         Args = new[]
         {
+            //Args below disable sandboxing for running in environments like Docker
             "--no-sandbox",
             "--disable-setuid-sandbox"
         }
